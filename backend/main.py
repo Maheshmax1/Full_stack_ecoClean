@@ -20,11 +20,11 @@ app.add_middleware(
 )
 
 # Include Routers
-app.include_router(auth.router)
-app.include_router(events.router)
-app.include_router(users.router)
-app.include_router(contact.router)
-app.include_router(admin.router)
+app.include_router(auth.router, prefix="/api")
+app.include_router(events.router, prefix="/api")
+app.include_router(users.router, prefix="/api")
+app.include_router(contact.router, prefix="/api")
+app.include_router(admin.router, prefix="/api")
 
 # Serve static files from the uploads directory
 if not os.path.exists("uploads"):
