@@ -9,20 +9,6 @@ router = APIRouter(
     tags=["Events"]
 )
 
-@router.post("/upload")
-async def upload_image(file: UploadFile = File(...), current_user: models.User = Depends(dependencies.get_current_admin)):
-    if not os.path.exists("uploads"):
-        os.makedirs("uploads")
-        
-    file_extension = os.path.splitext(file.filename)[1]
-    filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}{file_extension}"
-    file_path = os.path.join("uploads", filename)
-    
-    with open(file_path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-        
-    return {"id": filename, "url": f"/uploads/{filename}"}
-
 @router.get("/", response_model=List[schemas.EventResponse])
 def read_events(status: Optional[str] = None, skip: int = 0, limit: int = 100, current_user: Optional[models.User] = Depends(dependencies.get_current_user_optional), db: Session = Depends(dependencies.get_db)):
     db_events = crud.get_events(db, status=status, skip=skip, limit=limit)

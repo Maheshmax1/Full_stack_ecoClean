@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 from database import engine, Base
 from routers import auth, events, users, contact, admin
 import os
@@ -25,11 +24,6 @@ app.include_router(events.router, prefix="/api")
 app.include_router(users.router, prefix="/api")
 app.include_router(contact.router, prefix="/api")
 app.include_router(admin.router, prefix="/api")
-
-# Serve static files from the uploads directory
-if not os.path.exists("uploads"):
-    os.makedirs("uploads")
-app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 @app.get("/")
 def read_root():
