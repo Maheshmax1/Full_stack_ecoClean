@@ -4,7 +4,7 @@ const API_URL = '/api'; // Use relative path for Vercel deployment
 //  CLOUDINARY CONFIG 
 // REPLACE 'your_cloud_name' and 'your_upload_preset' with your actual Cloudinary details
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/def2x8hlo/image/upload';
-const CLOUDINARY_UPLOAD_PRESET = 'jkuvrjef';
+const CLOUDINARY_UPLOAD_PRESET = 'Fullstack_Ecoclean';
 
 //  GLOBAL HELPERS 
 
