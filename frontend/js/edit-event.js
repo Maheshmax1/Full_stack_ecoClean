@@ -145,8 +145,8 @@ async function handleEditEvent(event) {
     // 1. Upload new image if one is selected
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('file', selectedFile);
       formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+      formData.append('file', selectedFile);
 
       try {
         const uploadRes = await fetch(CLOUDINARY_URL, {
@@ -157,9 +157,16 @@ async function handleEditEvent(event) {
         if (uploadRes.ok) {
           const uploadData = await uploadRes.json();
           finalImageUrl = uploadData.secure_url;
+        } else {
+          const errorData = await uploadRes.json();
+          console.error("Cloudinary Upload Failed:", errorData);
+          alert(`Cloudinary Upload Failed: ${errorData.error?.message || "Check your Cloud Name and Preset in config.js"}`);
+          return; // Stop the process if upload was intended but failed
         }
       } catch (err) {
-        console.error("Cloudinary Error:", err);
+        console.error("Cloudinary Network Error:", err);
+        alert("Network error while uploading to Cloudinary.");
+        return;
       }
     }
 
