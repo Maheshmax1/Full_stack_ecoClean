@@ -9,14 +9,36 @@ if backend_dir not in sys.path:
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from database import engine, Base
+from database import engine, Base, SessionLocal
 from routers import auth, events, users, contact, admin
+import models
+import crud
 
-# Optional: Run table creation on startup
+# Create tables and seed admin on startup
 try:
     Base.metadata.create_all(bind=engine)
+    
+    # Seed admin user if it doesn't exist
+    db = SessionLocal()
+    try:
+        admin_email = "admin@ecoclean.com"
+        db_admin = db.query(models.User).filter(models.User.email == admin_email).first()
+        if not db_admin:
+            hashed_pw = crud.get_password_hash("admin123")
+            new_admin = models.User(
+                full_name="System Admin",
+                email=admin_email,
+                phone="0000000000",
+                hashed_password=hashed_pw,
+                role="admin"
+            )
+            db.add(new_admin)
+            db.commit()
+            print("Default admin created: admin@ecoclean.com / admin123")
+    finally:
+        db.close()
 except Exception as e:
-    print(f"Database sync failed (might exist): {e}")
+    print(f"Startup sequence error: {e}")
 
 app = FastAPI(title="EcoClean API", version="1.0.0")
 
