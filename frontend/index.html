@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoClean Awareness</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="icon" href="./assets/sustainability.png" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <h3 id="nav-logo">🌿 EcoClean</h3>
+        <ul id="nav-menu">
+          <li><a href="#" class="active-page">Home</a></li>
+          <li><a href="./pages/about.html">About</a></li>
+          <li><a href="./pages/events.html">Events</a></li>
+          <li><a href="./pages/contact.html">Contact</a></li>
+          <li><a href="#auth-section">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="./assets/main_vedio.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-content">
+      <h1>Keep Our Planet Clean</h1>
+      <p>Join hands in cleaning rivers, beaches, and communities</p>
+      <a href="#auth-section" class="btn">Become a Volunteer</a>
+    </div>
+    <input type="checkbox" id="auth-toggle" style="display: none" />
+    <section class="login-section" id="auth-section">
+      <!-- Signup Form -->
+      <div class="login-container signup-form-container">
+        <h2>Create Account</h2>
+        <p>Join EcoClean and participate in clean & green events</p>
+
+        <form class="login-form" onsubmit="handleSignup(event)">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name" />
+          </div>
+
+          <div class="form-group">
+            <label for="email-signup">Email Address</label>
+            <input type="email" id="email-signup" name="email" required autocomplete="email"
+              placeholder="your.email@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210" />
+          </div>
+
+          <div class="form-group">
+            <label for="password-signup">Create Password</label>
+            <input type="password" id="password-signup" name="password" required minlength="6"
+              autocomplete="new-password" placeholder="Create a strong password" />
+          </div>
+
+          <button type="submit" class="submit-btn" style="width: 100%">
+            Sign Up
+          </button>
+
+          <p class="form-footer">
+            Already have an account?
+            <label for="auth-toggle" class="toggle-link">Login</label>
+          </p>
+        </form>
+      </div>
+
+      <!-- Login Form -->
+      <div class="login-container login-form-container">
+        <h2>Welcome Back</h2>
+        <p>Login to view your events and profile</p>
+
+        <form class="login-form" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="email-login">Email Address</label>
+            <input type="email" id="email-login" name="email" required autocomplete="email"
+              placeholder="your.email@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="password-login">Password</label>
+            <input type="password" id="password-login" name="password" required placeholder="Enter your password" />
+          </div>
+
+          <button type="submit" class="submit-btn" style="width: 100%">
+            Login
+          </button>
+
+          <p class="form-footer">
+            Don't have an account?
+            <label for="auth-toggle" class="toggle-link">Register as Volunteer</label>
+          </p>
+        </form>
+      </div>
+    </section>
+  </section>
+
+  <section id="about">
+    <h2 class="hi">About Us</h2>
+    <div class="container about">
+      <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80"
+        alt="About EcoClean" />
+      <div class="about-text">
+        <p>
+          EcoClean is dedicated to spreading awareness about pollution and
+          encouraging community cleaning initiatives.
+        </p>
+        <p>
+          We organize events to clean rivers, beaches, parks, and public
+          spaces.
+        </p>
+        <p>
+          Our mission is to create a cleaner, healthier environment for
+          everyone.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <h2>Events</h2>
+    <div class="container events">
+      <img src="https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=800&q=80"
+        alt="Cleaning Event" />
+      <div class="events-text">
+        <p>
+          <span><b>"Clean surroundings, healthy living."</b></span> Our
+          upcoming cleaning awareness events are designed to bring our
+          community together for a cleaner and greener tomorrow.
+        </p>
+        <p>
+          <span><b>"Be the change you wish to see — start by cleaning your
+              street."</b></span>
+          Join us as volunteers gather to clean public areas, parks, and
+          roads.
+        </p>
+        <p>
+          <span><b>"A clean city reflects the mindset of its people."</b></span>
+          Through our events, we aim to educate everyone about waste
+          management, recycling, and sustainable habits.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="volunteer">
+    <h2>Volunteer</h2>
+    <div class="container volunteer">
+      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80"
+        alt="Volunteers" />
+      <div class="volunteer-text">
+        <p>
+          Be part of our community of volunteers who actively participate in
+          cleaning initiatives.
+        </p>
+        <p>Sign up today and help us make a difference!</p>
+        <a href="#auth-section">Sign Up Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            We are a volunteer group spreading awareness about keeping our
+            city clean and green.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./pages/about.html">About</a></li>
+            <li><a href="#auth-section">Volunteer</a></li>
+            <li><a href="./pages/contact.html">Contact</a></li>
+            <li><a href="#auth-section">Login</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li>
+              <a href="https://youtube.com/watch?v=uRhv5kIi7Is">Clean-up Drives</a>
+            </li>
+            <li>
+              <a href="https://nskfdc.nic.in/en/content/home/workshops">Workshops</a>
+            </li>
+            <li>
+              <a href="https://www.quantcast.com/wiki/term/awareness-campaign/">Awareness Campaigns</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <ul>
+            <li>
+              <a
+                href="https://www.facebook.com/moayush/videos/cleanliness-is-a-way-of-life-not-just-a-fleeting-commitment-watch-this-video-to-/3262202010591812/">Facebook</a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/reel/DLHV_0JNCjk/">Instagram</a>
+            </li>
+            <li><a href="https://x.com/">Twitter</a></li>
+            <li>
+              <a href="https://www.linkedin.com/learning/productive-creativity">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>
+            <a href="mailto:info@cleanawareness.com">info@cleanawareness.com</a>
+          </p>
+          <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+          <p>Location: Chennai, India</p>
+        </div>
+      </div>
+
+      <p class="copyright">
+        © 2025 <a href="https://copyright.gov.in/">EcoClean Awareness</a> |
+        All Rights Reserved
+      </p>
+    </div>
+  </footer>
+  <script src="./js/navbar.js"></script>
+  <script src="./js/config.js"></script>
+  <script src="./js/auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Registrations | 🌿 EcoClean Admin</title>
+  <link rel="stylesheet" href="../styles/admin.css" />
+  <link rel="stylesheet" href="../styles/events_manage.css" />
+  <link rel="icon" href="../assets/sustainability.png" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <h2 id="nav-logo">🌿 EcoClean Admin</h2>
+        <ul id="nav-menu">
+          <li><a href="#" onclick="logout(event)"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="admin-wrapper container">
+    <aside class="sidebar">
+      <ul class="sidebar-menu">
+        <li><a href="admin.html#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="admin.html#events-section"><i class="fas fa-calendar-alt"></i> Events</a></li>
+        <li><a href="admin.html#volunteers-section"><i class="fas fa-users"></i> Volunteers</a></li>
+        <li><a href="events_manage.html" class="active-page"><i class="fas fa-clipboard-list"></i> Event
+            Registrations</a></li>
+        <li><a href="admin.html#messages-section"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="../index.html"><i class="fas fa-external-link-alt"></i> View Website </a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header" style="margin-bottom: 30px;">
+        <h1 class="page-title"><i class="fas fa-clipboard-check"></i> Event Registrations</h1>
+        <p class="welcome-message">View and manage all volunteers signed up for your events. 🌱</p>
+      </div>
+
+      <div id="registrations-section">
+        <div class="registrations-container" id="registrations-container">
+          <!-- Registrations will be loaded here by events_manage.js -->
+          <div style="text-align: center; padding: 40px;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #4CAF50;"></i>
+            <p style="margin-top: 10px; color: #666;">Loading registrations...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/navbar.js"></script>
+  <script src="../js/events_manage.js"></script>
+</body>
+
+</html>

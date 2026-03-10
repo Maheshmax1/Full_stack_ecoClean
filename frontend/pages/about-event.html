@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Development Workshop</title>
+
+  <link rel="stylesheet" href="../styles/about-event.css" />
+</head>
+
+<body>
+
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <h2 id="nav-logo">🌿 EcoClean</h2>
+        <ul id="nav-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./events.html">Events</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="../index.html#auth-section">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Event Section -->
+  <section>
+    <div class="event-card">
+
+      <!-- Event Image -->
+      <div id="event-header-image">
+        <img src="../assets/placeholder.jpg" alt="Event Image" id="event-image">
+        <p class="location" id="event-location">📍 Location: Loading...</p>
+      </div>
+
+      <!-- Event Details -->
+      <div class="event-details" id="event-content">
+        <h2 id="event-title">Event Title</h2>
+
+        <p class="info" id="event-date"> Date: Loading...</p>
+        <p class="info" id="event-time"> Time: Loading...</p>
+
+        <div id="event-description">
+          <p>Please wait while we fetch the event details...</p>
+        </div>
+
+        <div id="registered-volunteers-section" style="margin-top: 25px; display: none;">
+          <h3
+            style="color: #2e8b57; font-size: 1.2rem; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+            👥 Joined Volunteers</h3>
+          <ul id="volunteers-list" style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+            <!-- Volunteer tags will be added here -->
+          </ul>
+        </div>
+
+        <a href="./greet.html" class="btn">Click to Join Event</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            We are a volunteer group spreading awareness about keeping our
+            city clean and green.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./events.html">Events</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="../index.html#auth-section">Login</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="https://youtube.com/watch?v=uRhv5kIi7Is">Clean-up Drives</a></li>
+            <li><a href="https://nskfdc.nic.in/en/content/home/workshops">Workshops</a></li>
+            <li><a href="https://www.quantcast.com/wiki/term/awareness-campaign/">Awareness Campaigns</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a
+                href="https://www.facebook.com/moayush/videos/cleanliness-is-a-way-of-life-not-just-a-fleeting-commitment-watch-this-video-to-/3262202010591812/">Facebook</a>
+            </li>
+            <li><a href="https://www.instagram.com/reel/DLHV_0JNCjk/">Instagram</a></li>
+            <li><a href="https://x.com/">Twitter</a></li>
+            <li><a href="https://www.linkedin.com/learning/productive-creativity">LinkedIn</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>
+            <a href="mailto:info@cleanawareness.com">info@cleanawareness.com</a>
+          </p>
+          <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+          <p>Location: Chennai, India</p>
+        </div>
+      </div>
+
+      <p class="copyright">
+        © 2025 <a href="https://copyright.gov.in/">EcoClean Awareness</a> | All Rights Reserved
+      </p>
+    </div>
+  </footer>
+
+  <script src="../js/navbar.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/event-detail.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile – EcoClean</title>
+    <meta name="description"
+        content="Your EcoClean volunteer dashboard – view your registered events and profile details." />
+    <link rel="stylesheet" href="../styles/profile.css" />
+    <link rel="icon" href="../assets/sustainability.png" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ===== HEADER / NAV ===== -->
+    <header>
+        <div class="container">
+            <nav>
+                <h2 id="nav-logo">🌿 EcoClean</h2>
+                <ul id="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./events.html">Events</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="#" class="logout-link" onclick="logout(event)">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== PROFILE HERO ===== -->
+    <section class="profile-header" aria-label="Volunteer profile">
+        <div class="container">
+            <div class="profile-info">
+                <div class="profile-avatar" aria-hidden="true">👤</div>
+                <div class="profile-text" id="volunteer-profile-details">
+                    <h1 id="vol-name">Welcome!</h1>
+                    <p><strong>Volunteer ID:</strong> <span id="vol-id">Loading…</span></p>
+                    <p><strong>Email:</strong> <span id="vol-email">Loading…</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REGISTERED EVENTS ===== -->
+    <section class="dashboard-section" aria-label="Registered events">
+        <div class="container">
+            <div class="section-heading">
+                <h2>My Registered Events</h2>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="events-grid" id="registered-events-list">
+                <!-- Loading state -->
+                <div class="loading-state" id="loading-placeholder">
+                    <span class="loading-spinner" aria-hidden="true"></span>
+                    <p>Loading your registered events…</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EMPTY STATE (hidden by default, shown by JS) ===== -->
+    <template id="empty-state-tpl">
+        <div class="empty-state">
+            <div class="empty-icon" aria-hidden="true">🌿</div>
+            <h3>No Events Yet</h3>
+            <p>You haven't registered for any events. Explore upcoming events and join the movement!</p>
+            <a href="./events.html" class="btn-primary">Browse Events</a>
+        </div>
+    </template>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>We are a volunteer group spreading awareness about keeping our city clean and green.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./events.html">Events</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="../index.html#auth-section">Profile</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="https://youtube.com/watch?v=uRhv5kIi7Is" target="_blank" rel="noopener">Clean-up
+                                Drives</a></li>
+                        <li><a href="https://nskfdc.nic.in/en/content/home/workshops" target="_blank"
+                                rel="noopener">Workshops</a></li>
+                        <li><a href="https://www.quantcast.com/wiki/term/awareness-campaign/" target="_blank"
+                                rel="noopener">Awareness Campaigns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://www.facebook.com/moayush/videos/cleanliness-is-a-way-of-life-not-just-a-fleeting-commitment-watch-this-video-to-/3262202010591812/"
+                                target="_blank" rel="noopener">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/reel/DLHV_0JNCjk/" target="_blank"
+                                rel="noopener">Instagram</a></li>
+                        <li><a href="https://x.com/" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="https://www.linkedin.com/learning/productive-creativity" target="_blank"
+                                rel="noopener">LinkedIn</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><a href="mailto:info@cleanawareness.com">info@cleanawareness.com</a></p>
+                    <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+                    <p>Location: Chennai, India</p>
+                </div>
+
+            </div>
+
+            <p class="copyright">
+                &copy; 2025 <a href="https://copyright.gov.in/" target="_blank" rel="noopener">EcoClean Awareness</a> |
+                All Rights Reserved
+            </p>
+        </div>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+
+</html>

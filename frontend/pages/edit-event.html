@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Event | 🌿 EcoClean Admin</title>
+    <link rel="stylesheet" href="../styles/admin.css" />
+    <link rel="stylesheet" href="../styles/event-form.css" />
+    <link rel="icon" href="../assets/sustainability.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <h2 id="nav-logo">🌿 EcoClean Admin</h2>
+                <ul id="nav-menu">
+                    <li><a href="#" onclick="logout(event)"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-wrapper container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="admin.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a></li>
+                <li><a href="edit-event.html" class="active-page"><i class="fas fa-edit"></i> Edit Event</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <!-- Loading skeleton -->
+            <div id="form-skeleton" class="skeleton-wrapper">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-body"></div>
+            </div>
+
+            <!-- Main form (hidden until event data loads) -->
+            <div id="form-content" style="display:none;">
+
+                <!-- Completed event banner -->
+                <div class="completed-banner" id="completed-banner" style="display:none;">
+                    <i class="fas fa-check-circle"></i>
+                    <span>This event is <strong>Completed</strong>. Editing is disabled. You can still view
+                        details.</span>
+                </div>
+
+                <div class="form-page-header">
+                    <div>
+                        <h1 class="page-title"><i class="fas fa-edit"></i> Edit Event</h1>
+                        <p class="welcome-message" id="event-subtitle">Update the event details below.</p>
+                    </div>
+                </div>
+
+                <!-- Toast Notification -->
+                <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+                <div class="form-card">
+                    <form id="editEventForm" onsubmit="handleEditEvent(event)">
+
+                        <!-- Event Title -->
+                        <div class="form-group">
+                            <label for="title" class="form-label">
+                                <i class="fas fa-heading"></i> Event Title <span class="required">*</span>
+                            </label>
+                            <input type="text" id="title" name="title" class="form-input" required minlength="5"
+                                placeholder="e.g. Beach Cleanup Drive" maxlength="100" />
+                            <span class="field-error" id="title-error"></span>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description" class="form-label">
+                                <i class="fas fa-align-left"></i> Description <span class="required">*</span>
+                            </label>
+                            <textarea id="description" name="description" rows="4" class="form-input"
+                                required></textarea>
+                            <span class="field-error" id="description-error"></span>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="form-group">
+                            <label for="location" class="form-label">
+                                <i class="fas fa-map-marker-alt"></i> Location <span class="required">*</span>
+                            </label>
+                            <input type="text" id="location" name="location" class="form-input" required />
+                            <span class="field-error" id="location-error"></span>
+                        </div>
+
+                        <!-- Date + Time Row -->
+                        <div class="form-row three-col">
+                            <div class="form-group">
+                                <label for="event_date" class="form-label">
+                                    <i class="fas fa-calendar"></i> Date <span class="required">*</span>
+                                </label>
+                                <input type="date" id="event_date" name="event_date" class="form-input" required />
+                                <span class="field-error" id="date-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="start_time" class="form-label">
+                                    <i class="fas fa-clock"></i> Start Time <span class="required">*</span>
+                                </label>
+                                <input type="time" id="start_time" name="start_time" class="form-input" required />
+                                <span class="field-error" id="start-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="end_time" class="form-label">
+                                    <i class="fas fa-clock"></i> End Time <span class="required">*</span>
+                                </label>
+                                <input type="time" id="end_time" name="end_time" class="form-input" required />
+                                <span class="field-error" id="end-error"></span>
+                            </div>
+                        </div>
+
+                        <!-- Image Upload -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-image"></i> Event Image <span class="optional">(optional)</span>
+                            </label>
+                            <div class="image-upload-area" id="image-upload-area"
+                                onclick="document.getElementById('image_file').click()">
+                                <div class="upload-placeholder" id="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <p class="upload-text">Click to upload a new image or drag &amp; drop</p>
+                                    <p class="upload-hint">JPG, PNG, WEBP up to 5 MB</p>
+                                </div>
+                                <img id="image-preview" class="image-preview" src="" alt="Event Image Preview"
+                                    style="display:none;" />
+                            </div>
+                            <input type="file" id="image_file" name="image_file" accept="image/*"
+                                class="file-input-hidden" onchange="handleImageUpload(this)" />
+                            <div class="image-actions" id="image-actions" style="display:none;">
+                                <button type="button" class="remove-image-btn" onclick="removeImage()">
+                                    <i class="fas fa-trash"></i> Remove Image
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="btn-row">
+                            <a href="admin.html" class="btn-cancel">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn-submit" id="submit-btn">
+                                <span class="btn-text"><i class="fas fa-save"></i> Save Changes</span>
+                                <span class="btn-loading" style="display:none;"><i class="fas fa-spinner fa-spin"></i>
+                                    Saving…</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/edit-event.js"></script>
+</body>
+
+</html>

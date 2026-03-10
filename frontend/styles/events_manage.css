@@ -1,0 +1,191 @@
+/* ======================================== 
+   EVENTS MANAGEMENT SPECIFIC STYLES 
+   (Refactored to match Admin Dashboard)
+   ======================================== */
+
+/* Note: Core layout (Sidebar, Header, Body) is handled by admin.css */
+
+/* Back Button Area */
+.action-bar {
+  max-width: 1400px;
+  width: 95%;
+  margin: 20px auto 0;
+  padding: 0 15px;
+}
+
+.back_btn {
+  background-color: #ffd700;
+  color: #2e8b57;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back_btn:hover {
+  background-color: #ffed4e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Main Content Area */
+#registrations-section {
+  max-width: 1400px;
+  width: 95%;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+
+
+.section-description {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.registrations-container {
+  display: grid;
+  gap: 30px;
+}
+
+/* Event Cards */
+.registration-event-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* Admin card shadow */
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  /* Removed border to cleaner look */
+}
+
+.registration-event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Card Header */
+.registration-event-header {
+  background: white;
+  /* Clean white background */
+  padding: 25px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.registration-event-title {
+  color: #2e8b57;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.registration-event-meta {
+  color: #777;
+  font-size: 0.95rem;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.registration-volunteer-count {
+  background: #e8f5e9;
+  color: #2e8b57;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Table Styles */
+.registration-volunteers-table {
+  padding: 0;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+thead th {
+  background: #f8fcf9;
+  /* Lighter header for sub-tables */
+  color: #2e8b57;
+  padding: 15px 25px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 2px solid #e8f5e9;
+}
+
+tbody td {
+  padding: 15px 25px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #fafaeb;
+  /* Subtle hover color */
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-registered {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* No Volunteers Message */
+.no-volunteers-message {
+  padding: 40px;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  background: #fdfdfd;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .registration-event-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .registration-volunteer-count {
+    align-self: flex-start;
+  }
+
+  thead th,
+  tbody td {
+    padding: 12px 15px;
+  }
+}

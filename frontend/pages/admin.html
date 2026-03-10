@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | 🌿 EcoClean</title>
+    <link rel="stylesheet" href="../styles/admin.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <h2 id="nav-logo">🌿 EcoClean Admin</h2>
+                <ul id="nav-menu">
+                    <li><a href="#" onclick="logout(event)"> <i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-wrapper container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#dashboard" class="active-page"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#events-section"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                <li><a href="#volunteers-section"><i class="fas fa-users"></i> Volunteers</a></li>
+                <li><a href="#messages-section"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="#registrations-section"><i class="fas fa-clipboard-list"></i> Event Registrations</a></li>
+                <li><a href="../index.html"><i class="fas fa-external-link-alt"></i> View Website </a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <div id="dashboard">
+                <h1 class="page-title">Admin Dashboard Overview</h1>
+                <p class="welcome-message">Welcome back! Manage your EcoClean community efficiently. 🌱</p>
+
+                <section class="stats-grid" id="admin-stats">
+                    <div class="stat-card">
+                        <h3>Upcoming Events</h3>
+                        <p class="stat-value" id="stat-upcoming-count">--</p>
+                        <span class="stat-trend" id="stat-upcoming-detail">Loading...</span>
+                        <i class="fas fa-calendar-day icon-large"></i>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completed Events</h3>
+                        <p class="stat-value" id="stat-completed-count">--</p>
+                        <span class="stat-trend" id="stat-completed-detail">Loading...</span>
+                        <i class="fas fa-check-circle icon-large"></i>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Events Section -->
+            <div id="events-section">
+                <div class="section-header">
+                    <h2 class="section-title">Manage Events</h2>
+                    <a href="add-event.html" class="action-btn add-btn header-action">
+                        <i class="fas fa-plus"></i> Add New Event
+                    </a>
+                </div>
+                <div class="events-list card" id="admin-events-list">
+                    <p style="padding: 20px; text-align: center;">Loading events...</p>
+                </div>
+            </div>
+
+            <!-- Volunteers Section -->
+            <div id="volunteers-section">
+                <h2 class="section-title">Volunteer Applications</h2>
+                <div class="table-container card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Interest</th>
+                                <th>Availability</th>
+                            </tr>
+                        </thead>
+                        <tbody id="volunteer-applications-list">
+                            <!-- Volunteer applications will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Messages Section -->
+            <div id="messages-section">
+                <h2 class="section-title">Contact Form Messages</h2>
+                <div class="messages-container" id="admin-messages-list">
+                    <!-- Messages will be loaded here -->
+                    <p style="padding: 20px; text-align: center;">Loading messages...</p>
+                </div>
+            </div>
+
+            <!-- Event Registrations Section -->
+            <div id="registrations-section">
+                <h2 class="section-title">Event Registrations</h2>
+                <div class="registrations-container" id="registrations-container">
+                    <p style="padding: 20px; text-align: center;">Loading registrations...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Message Detail Modal -->
+    <div id="message-modal" class="modal"
+        style="display:none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);">
+        <div class="modal-content"
+            style="background: white; margin: 10% auto; padding: 30px; border-radius: 12px; width: 50%; max-width: 600px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            <span class="close-modal" onclick="closeMessageModal()"
+                style="position: absolute; right: 20px; top: 15px; font-size: 24px; cursor: pointer; color: #888;">&times;</span>
+            <h2 id="modal-subject" style="color: #4CAF50; margin-bottom: 15px;">Message Subject</h2>
+            <div id="modal-body" style="line-height: 1.6; color: #444;">
+                <p><strong>From:</strong> <span id="modal-name"></span> (<span id="modal-email"></span>)</p>
+                <p><strong>Category:</strong> <span id="modal-category"></span> | <strong>Priority:</strong> <span
+                        id="modal-priority" style="text-transform: capitalize;"></span></p>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+                <p id="modal-message"
+                    style="background: #f9f9f9; padding: 15px; border-radius: 6px; min-height: 100px;"></p>
+            </div>
+            <div style="margin-top: 25px; display: flex; justify-content: flex-end; gap: 10px;">
+                <button onclick="closeMessageModal()" class="action-btn"
+                    style="background: #eee; color: #333; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Close</button>
+                <button id="solve-btn" class="action-btn delete-btn"
+                    style="background: #f44336; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">🗑️
+                    Mark as Solved</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>
