@@ -1,13 +1,9 @@
 // Load events
 async function fetchPublicEvents() {
   try {
-    // We try with token if available, but don't force login if it fails (using requireAuth=false)
+    // We try with token if available
     const response = await apiRequest("/events/", "GET", null, false);
 
-    if (!response) {
-      showError("No response from server");
-      return;
-    }
     if (!response.ok) {
       showError("Server Error: " + response.status);
       return;
@@ -87,8 +83,8 @@ function createEventCard(event, isUpcoming) {
       <h3>${event.title}</h3>
       <p>${event.description}</p>
       <div class="event-details">
-        <div>📅 ${event.event_date}</div>
-        <div>⏰ ${event.start_time} - ${event.end_time}</div>
+        <div> ${event.event_date}</div>
+        <div> ${event.start_time} - ${event.end_time}</div>
       </div>
       ${isUpcoming
       ? `<a href="${link}">

@@ -8,11 +8,6 @@ let currentImageUrl = "";
 
 //  FETCH EVENT 
 async function fetchEventDetails() {
-  // if (!eventId) {
-  //   alert("No event ID provided.");
-  //   window.location.href = "admin.html";
-  //   return;
-  // }
 
   try {
     // Show skeleton

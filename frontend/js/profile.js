@@ -87,8 +87,8 @@ async function fetchMyEvents() {
                     </div>
                     <div class="card-content">
                         <h3>${event.title}</h3>
-                        <p class="location">📍 ${event.location}</p>
-                        <p class="date">📅 ${event.event_date}</p>
+                        <p class="location"> ${event.location}</p>
+                        <p class="date"> ${event.event_date}</p>
                     </div>
                 `;
                 list.appendChild(card);

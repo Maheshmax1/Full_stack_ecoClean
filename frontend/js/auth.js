@@ -44,8 +44,7 @@ async function handleLogin(event) {
     const credentials = { email, password };
 
     try {
-        // We removed the hardcoded 'admin@ecoclean.com' check 
-        // to let the backend provide a REAL token for admin accounts.
+        
         const response = await apiRequest("/auth/login", "POST", credentials, false);
 
         if (response && response.ok) {

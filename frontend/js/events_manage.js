@@ -27,7 +27,7 @@ async function fetchEventRegistrations() {
 
     container.innerHTML = "";
 
-    if (!events.length ===0) {
+    if (events.length ===0) {
       container.innerHTML = "<p>No events found.</p>";
       return;
     }

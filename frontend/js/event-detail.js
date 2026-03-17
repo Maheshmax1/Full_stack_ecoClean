@@ -1,8 +1,8 @@
 
-// ================== STATE ==================
+//  STATE 
 const eventId = new URLSearchParams(window.location.search).get("id");
 
-// ================== LOAD EVENT ==================
+//  LOAD EVENT 
 async function fetchEventDetails() {
 
   if (!eventId) {
@@ -132,7 +132,7 @@ async function fetchEventDetails() {
 }
 
 
-// ================== JOIN EVENT ==================
+// JOIN EVENT 
 async function joinEvent(id) {
   if (!getToken()) {
     alert("Please login first to join events!");
@@ -143,11 +143,14 @@ async function joinEvent(id) {
   try {
     const res = await apiRequest(`/events/${id}/join`, "POST");
 
-    if (!res) return; // Handled by apiRequest (401)
+    // Handled by apiRequest (401)
+    if (!res) return; 
 
     if (res.ok) {
       alert("Successfully joined the event!");
-      location.reload(); // Refresh to show "Registered" state
+
+      // Refresh to show "Registered" state
+      location.reload(); 
     } else {
       const data = await res.json();
       alert("Error: " + (data.detail || "Could not join event"));
@@ -159,7 +162,7 @@ async function joinEvent(id) {
   }
 }
 
-// ================== LEAVE EVENT ==================
+//  LEAVE EVENT 
 async function leaveEvent(id) {
   if (!confirm("Are you sure you want to leave this event?")) return;
 
@@ -168,7 +171,9 @@ async function leaveEvent(id) {
 
     if (res && res.ok) {
       alert("You have left the event.");
-      location.reload(); // Refresh to show "Join" button again
+      
+      // Refresh to show "Join" button again
+      location.reload(); 
     } else {
       const data = await res.json();
       alert("Error: " + (data.detail || "Could not leave event"));
@@ -180,7 +185,7 @@ async function leaveEvent(id) {
 }
 
 
-// ================== AUTO LOAD ==================
+//  AUTO LOAD
 if (window.location.pathname.includes("about-event.html")) {
   fetchEventDetails();
 }
